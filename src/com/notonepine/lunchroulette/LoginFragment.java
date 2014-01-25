@@ -49,6 +49,8 @@ public class LoginFragment extends Fragment {
                             }
                         }
                     });
+
+                    // TODO: Add loading spinner here.
                 }
 
             }

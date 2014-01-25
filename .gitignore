@@ -27,3 +27,9 @@ proguard/
 *.ipr
 *.iws
 .idea/
+
+# Mac
+.DS_Store
+
+# Eclipse
+.settings

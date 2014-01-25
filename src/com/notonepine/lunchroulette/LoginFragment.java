@@ -56,11 +56,9 @@ public class LoginFragment extends Fragment {
     }
 
     private void moveToHomescreen() {
-
         FragmentTransaction ft = getFragmentManager().beginTransaction()
                         .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
                         .addToBackStack(null);
-
         ft.replace(R.id.container, new HomeFragment());
         ft.commit();
     }

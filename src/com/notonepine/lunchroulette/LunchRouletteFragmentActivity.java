@@ -44,9 +44,6 @@ public class LunchRouletteFragmentActivity extends FragmentActivity {
 
         gcm = GoogleCloudMessaging.getInstance(this);
         regid = getRegistrationId(context);
-
-        Toast.makeText(this, regid, Toast.LENGTH_LONG).show();
-
         if (regid.equals("")) {
             registerInBackground();
         }

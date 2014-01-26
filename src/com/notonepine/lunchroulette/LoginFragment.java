@@ -23,11 +23,8 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.parse.LogInCallback;
-import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseFacebookUtils.Permissions;
-import com.parse.ParseUser;
 
 public class LoginFragment extends Fragment {
     View mView;
@@ -133,9 +130,10 @@ public class LoginFragment extends Fragment {
     }
 
     private void moveToHomescreen() {
-        FragmentTransaction ft = getFragmentManager().beginTransaction()
-                        .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
-                        .addToBackStack(null);
+        FragmentTransaction ft = getFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out, android.R.anim.fade_in,
+                                        android.R.anim.fade_out).addToBackStack(null);
         ft.replace(R.id.container, new HomeFragment());
         ft.commit();
     }

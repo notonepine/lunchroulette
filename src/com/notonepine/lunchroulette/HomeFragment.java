@@ -3,14 +3,13 @@ package com.notonepine.lunchroulette;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.support.v4.app.Fragment;
+
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.notonepine.lunchroulette.views.RoundedImageView;
@@ -39,6 +38,7 @@ public class HomeFragment extends Fragment {
         if (userId != "" && userName != "") {
             name.setText("Welcome, " + userName);
             String avatarUrl = Utils.getUserAvatarUrl(userId);
+
             ImageLoader.getInstance().displayImage(avatarUrl, avatarImage);
         }
         super.onResume();

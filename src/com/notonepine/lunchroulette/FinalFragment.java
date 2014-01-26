@@ -3,6 +3,7 @@ package com.notonepine.lunchroulette;
 import org.json.JSONObject;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.notonepine.lunchroulette.views.RoundedImageView;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,6 +20,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,6 +31,8 @@ public class FinalFragment extends Fragment {
     View mView;
     private GoogleMap map;
     SharedPreferences mPrefs;
+
+    private int peopleCount = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,7 +89,7 @@ public class FinalFragment extends Fragment {
                 } else if (view.getId() == R.id.person_three_layout) {
                     fadeOut(((LinearLayout) mView.findViewById(R.id.loading_layout)));
                     fadeIn(((LinearLayout) mView.findViewById(R.id.final_map_container)));
-                    
+
                     Location location = Utils.getLocation(FinalFragment.this.getActivity());
                     LatLng ltl = new LatLng(location.getLongitude(), location.getLatitude());
                     map.moveCamera(CameraUpdateFactory.newLatLngZoom(ltl, 16));
@@ -148,9 +152,41 @@ public class FinalFragment extends Fragment {
 
     /**
      * Switches from the loading spinner to the map view.
+     * 
+     * @param name
+     * @param longitude
+     * @param latitude
      */
-    private void switchStates() {
+    private void switchStates(double latitude, double longitude, String name) {
+        ((TextView) mView.findViewById(R.id.meeting_point)).setText(name);
+        fadeOut(((LinearLayout) mView.findViewById(R.id.loading_layout)));
+        fadeIn(((LinearLayout) mView.findViewById(R.id.final_map_container)));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(longitude, latitude), 16));
+    }
 
+    private void addPerson(String name, String url) {
+        switch (peopleCount) {
+        case 1:
+            ((TextView) mView.findViewById(R.id.person_one_name)).setText(name);
+            ((LunchRouletteFragmentActivity) getActivity()).loader.displayImage(url,
+                            ((RoundedImageView) mView.findViewById(R.id.person_one_image)));
+            translatePersonIn(((LinearLayout) mView.findViewById(R.id.person_one_layout)), 600);
+            break;
+        case 2:
+            ((TextView) mView.findViewById(R.id.person_two_name)).setText(name);
+            ((LunchRouletteFragmentActivity) getActivity()).loader.displayImage(url,
+                            ((RoundedImageView) mView.findViewById(R.id.person_two_image)));
+            translatePersonIn(((LinearLayout) mView.findViewById(R.id.person_two_layout)), 400);
+
+            break;
+        case 3:
+            ((TextView) mView.findViewById(R.id.person_three_name)).setText(name);
+            ((LunchRouletteFragmentActivity) getActivity()).loader.displayImage(url,
+                            ((RoundedImageView) mView.findViewById(R.id.person_three_image)));
+            translatePersonIn(((LinearLayout) mView.findViewById(R.id.person_three_layout)), 200);
+
+            break;
+        }
     }
 
     private JsonHttpResponseHandler newUserFound() {
@@ -159,7 +195,8 @@ public class FinalFragment extends Fragment {
             public void onSuccess(JSONObject userData) {
                 String name = userData.optString("name");
                 String avatarUrl = Utils.getUserAvatarUrl(userData.optString("fb_id"));
-                // do something with this
+                peopleCount++;
+                addPerson(name, avatarUrl);
             }
         };
     }
@@ -171,7 +208,7 @@ public class FinalFragment extends Fragment {
                 double latitude = restaurant.optDouble("lat");
                 double longitude = restaurant.optDouble("long");
                 String name = restaurant.optString("name");
-                // do something with this
+                switchStates(latitude, longitude, name);
             }
         };
     }

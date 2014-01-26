@@ -77,7 +77,7 @@ public class LoginFragment extends Fragment {
 
     private void sendUserToServer(GraphUser user) {
         JSONObject data = user.getInnerJSONObject();
-        String GCMID = mPrefs.getString(MainActivity.PROPERTY_REG_ID, "");
+        String GCMID = mPrefs.getString(LunchRouletteFragmentActivity.PROPERTY_REG_ID, "");
         try {
             data.put("GCM_ID", GCMID);
         } catch (JSONException e) {
@@ -87,7 +87,7 @@ public class LoginFragment extends Fragment {
         Log.d("MyApp", "User data to server: " + data.toString());
         // mocked successful response
         userSignup().onSuccess(null);
-        // NetworkConnection.getService().post("http://example.com/user", data.toString(), userSignup());
+//        NetworkConnection.getService().post("http://hacktech4.cloudapp.net:80/users/", data.toString(), userSignup());
     }
 
     private NetworkResponseListener userSignup() {

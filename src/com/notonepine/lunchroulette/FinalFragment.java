@@ -135,7 +135,7 @@ public class FinalFragment extends Fragment {
             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         } else {
             CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude))
-                            .zoom(17).bearing(90) // Sets the orientation of the camera to east
+                            .zoom(16).bearing(90) // Sets the orientation of the camera to east
                             .tilt(30) // Sets the tilt of the camera to 30 degrees
                             .build(); // Creates a CameraPosition from the builder
             map.getUiSettings().setZoomControlsEnabled(false);

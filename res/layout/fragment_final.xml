@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pairing_bg" >
+    android:background="@drawable/pairing_bg_new" >
 
     <LinearLayout
         android:id="@+id/loading_layout"
@@ -10,11 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="240dp"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp" >
+        android:paddingRight="24dp"
+        android:visibility="invisible" >
 
         <ProgressBar
             android:id="@+id/final_loading_spinner"
@@ -22,24 +23,170 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp" />
 
-        <TextView
+        <com.notonepine.lunchroulette.views.TextViewWithFont
             android:id="@+id/final_loading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="We&apos;re doing some magic to find people for you to have lunch with"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFF" />
     </LinearLayout>
 
-    <TextView
+    <com.notonepine.lunchroulette.views.TextViewWithLobster
         android:id="@+id/final_top_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_marginTop="23dp"
+        android:text="You&apos;re Having Lunch With"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFF"
+        android:textSize="27sp" />
+
+    <LinearLayout
+        android:id="@+id/person_one_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/final_top_text"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="34dp"
+        android:layout_toLeftOf="@+id/person_two_layout"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.notonepine.lunchroulette.views.RoundedImageView
+            android:id="@+id/person_one_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/com_facebook_profile_default_icon" />
+
+        <com.notonepine.lunchroulette.views.TextViewWithFont
+            android:id="@+id/person_one_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="Vic"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/person_two_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/person_one_layout"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.notonepine.lunchroulette.views.RoundedImageView
+            android:id="@+id/person_two_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/com_facebook_profile_default_icon" />
+
+        <com.notonepine.lunchroulette.views.TextViewWithFont
+            android:id="@+id/person_two_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="Vic"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/person_three_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/person_two_layout"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/person_two_layout"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.notonepine.lunchroulette.views.RoundedImageView
+            android:id="@+id/person_three_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/com_facebook_profile_default_icon" />
+
+        <com.notonepine.lunchroulette.views.TextViewWithFont
+            android:id="@+id/person_three_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="Vic"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/person_one_layout"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.notonepine.lunchroulette.views.TextViewWithLobster
+            android:id="@+id/final_you_are_eating_at_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You&apos;ll be meeting at"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFF"
+            android:textSize="27sp" />
+
+        <com.notonepine.lunchroulette.views.TextViewWithFont
+            android:id="@+id/meeting_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Chez du Chat"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFF" />
+
+        <ImageView
+            android:id="@+id/final_hopeful_map"
+            android:layout_width="fill_parent"
+            android:layout_height="160dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/smoke_bg" />
+
+        <com.notonepine.lunchroulette.views.TextViewWithLobster
+            android:id="@+id/final_please_meet_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="Please meet by 4:20pm"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFF"
+            android:textSize="27sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/final_cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/cancel" />
+
+    <Button
+        android:id="@+id/final_on_my_way_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/final_cancel_button"
+        android:layout_alignBottom="@+id/final_cancel_button"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/on_my_way" />
 
 </RelativeLayout>

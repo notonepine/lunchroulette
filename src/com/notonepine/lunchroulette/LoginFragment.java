@@ -23,8 +23,11 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.parse.LogInCallback;
+import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseFacebookUtils.Permissions;
+import com.parse.ParseUser;
 
 public class LoginFragment extends Fragment {
     View mView;
@@ -50,19 +53,19 @@ public class LoginFragment extends Fragment {
         return new OnClickListener() {
             @Override
             public void onClick(View v) {
-                moveToHomescreen();
+                // moveToHomescreen();
 
-                // // TODO Start loading animation
-                // ParseFacebookUtils.logIn(fbPermissions(), getActivity(), new LogInCallback() {
-                // @Override
-                // public void done(ParseUser user, ParseException err) {
-                // if (user == null) {
-                // Log.d("MyApp", "Exception: " + err.getMessage());
-                // } else {
-                // getUserData();
-                // }
-                // }
-                // });
+                // TODO Start loading animation
+                ParseFacebookUtils.logIn(fbPermissions(), getActivity(), new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException err) {
+                        if (user == null) {
+                            // Log.d("MyApp", "Exception: " + err.getMessage());
+                        } else {
+                            getUserData();
+                        }
+                    }
+                });
             }
         };
     }
@@ -101,7 +104,9 @@ public class LoginFragment extends Fragment {
             public void onSuccess(String response) {
                 try {
                     storeUserId(new JSONObject(response).getString("id"));
-                } catch (JSONException e) { /* fuck it */ };
+                } catch (JSONException e) { /* fuck it */
+                }
+                ;
 
                 moveToHomescreen();
             }
@@ -130,7 +135,7 @@ public class LoginFragment extends Fragment {
         FragmentTransaction ft = getFragmentManager()
                         .beginTransaction()
                         .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out, android.R.anim.fade_in,
-                                        android.R.anim.fade_out ).addToBackStack(null);
+                                        android.R.anim.fade_out).addToBackStack(null);
         ft.replace(R.id.container, new HomeFragment());
         ft.commit();
     }

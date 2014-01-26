@@ -59,6 +59,7 @@ public class LunchRouletteFragmentActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         openSans = Typeface.createFromAsset(getAssets(), "fonts/opensans.ttf");
+        lobster = Typeface.createFromAsset(getAssets(), "fonts/lobster.ttf");
         Parse.initialize(this, "QCYQYAaLANlJtBoohLfBhdg7C9HtFdRpCE3aVFNh", "UOaeCJzOQRwV2T9TIOVtLh3NiFVoCAMXS001yM5W");
         ParseFacebookUtils.initialize("1456402971254781");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();

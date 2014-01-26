@@ -13,7 +13,7 @@ public class FinalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_final, container, false);
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return mView;
     }
 
 }

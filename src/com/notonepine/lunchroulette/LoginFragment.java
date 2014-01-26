@@ -1,9 +1,9 @@
 package com.notonepine.lunchroulette;
 
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,7 +22,7 @@ import android.widget.Button;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
-import com.notonepine.lunchroulette.NetworkService.NetworkResponseListener;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
@@ -43,7 +43,7 @@ public class LoginFragment extends Fragment {
 
     @Override
     public void onResume() {
-        if (mPrefs.getString(MainActivity.FACEBOOK_USER_ID, "") != "") {
+        if (mPrefs.getString(MainActivity.USER_ID, "") != "") {
             moveToHomescreen();
         }
         super.onResume();
@@ -77,7 +77,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onCompleted(GraphUser user, Response response) {
                 // TODO check for errors on response
-                storeUserPreferences(user);
+                storeFacebookData(user);
                 sendUserToServer(user);
             }
         });
@@ -94,30 +94,35 @@ public class LoginFragment extends Fragment {
             e.printStackTrace();
         }
         Log.d("MyApp", "User data to server: " + data.toString());
-        // mocked successful response
-        userSignup().onSuccess(null);
-        // NetworkConnection.getService().post("http://10.55.51.78:3000/", data.toString(), userSignup());
+        NetworkUtils.postUser(data, userSignup());
     }
 
-    private NetworkResponseListener userSignup() {
-        return new NetworkResponseListener() {
-            @Override
-            public void onSuccess(InputStream data) {
-                // TODO if new, move to signup flow
-                moveToHomescreen();
-            }
-
-            @Override
-            public void onError(Exception error) {
-                // TODO error something...
-            }
+    private AsyncHttpResponseHandler userSignup() {
+    	return new AsyncHttpResponseHandler() {
+        	@Override
+        	public void onSuccess(String response) {
+        		try {
+            		storeUserId(new JSONObject(response).getString("id"));
+        		} catch (JSONException e) { /* fuck it */ };
+        		moveToHomescreen();
+        	}
+        	@Override
+        	public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+        		Log.d("MyApp", "Status: " + statusCode);
+        	}
         };
     }
 
-    private void storeUserPreferences(GraphUser user) {
+    private void storeFacebookData(GraphUser user) {
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(MainActivity.FACEBOOK_USER_ID, user.getId());
-        editor.putString(MainActivity.USER_FULL_NAME, user.getName());
+        editor.putString(MainActivity.FACEBOOK_FULL_NAME, user.getName());
+        editor.commit();
+    }
+    
+    private void storeUserId(String id) {
+    	SharedPreferences.Editor editor = mPrefs.edit();
+        editor.putString(MainActivity.USER_ID, id);
         editor.commit();
     }
 

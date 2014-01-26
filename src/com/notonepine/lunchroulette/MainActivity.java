@@ -12,7 +12,6 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.facebook.model.GraphUser;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -23,8 +22,9 @@ public class MainActivity extends FragmentActivity {
 
     public static final String EXTRA_MESSAGE = "message";
     public static final String PROPERTY_REG_ID = "registration_id";
+    public static final String USER_ID = "user_id";
     public static final String FACEBOOK_USER_ID = "facebook_user_id";
-    public static final String USER_FULL_NAME = "user_full_name";
+    public static final String FACEBOOK_FULL_NAME = "user_full_name";
 
     private static final String SENDER_ID = "930480945207";
 
@@ -48,6 +48,7 @@ public class MainActivity extends FragmentActivity {
         NetworkConnection.initialize(getApplicationContext());
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
         ImageLoader.getInstance().init(config);
+        NetworkUtils.test();
 
         gcm = GoogleCloudMessaging.getInstance(this);
         regid = getRegistrationId(context);

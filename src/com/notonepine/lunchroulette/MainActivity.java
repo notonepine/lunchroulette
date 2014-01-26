@@ -20,8 +20,6 @@ public class MainActivity extends FragmentActivity {
 
     public static final String EXTRA_MESSAGE = "message";
     public static final String PROPERTY_REG_ID = "registration_id";
-    private static final String PROPERTY_APP_VERSION = "appVersion";
-    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     private static final String SENDER_ID = "930480945207";
 
@@ -72,6 +70,9 @@ public class MainActivity extends FragmentActivity {
         return registrationId;
     }
 
+    /**
+     * Register with GCM
+     */
     private void registerInBackground() {
         new AsyncTask<Void, Void, String>() {
             @Override
@@ -93,11 +94,17 @@ public class MainActivity extends FragmentActivity {
 
             @Override
             protected void onPostExecute(String msg) {
-                // TODO: Do stuff with our message?
+                // TODO: Do stuff with our message? I dont think this is necessary.
             }
         }.execute(null, null, null);
     }
 
+    /**
+     * Store the registration id in our preferences to recall later, when we send facebook login info.
+     * 
+     * @param context
+     * @param regId
+     */
     private void storeRegistrationId(Context context, String regId) {
         final SharedPreferences prefs = getGCMPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
@@ -109,8 +116,7 @@ public class MainActivity extends FragmentActivity {
      * @return Application's {@code SharedPreferences}.
      */
     private SharedPreferences getGCMPreferences(Context context) {
-        // This sample app persists the registration ID in shared preferences, but
-        // how you store the regID in your app is up to you.
+
         return getSharedPreferences(MainActivity.class.getSimpleName(), Context.MODE_PRIVATE);
     }
 

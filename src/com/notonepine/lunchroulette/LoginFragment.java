@@ -41,6 +41,14 @@ public class LoginFragment extends Fragment {
         return mView;
     }
 
+    @Override
+    public void onResume() {
+        if (mPrefs.getString(MainActivity.FACEBOOK_USER_ID, "") != "") {
+            moveToHomescreen();
+        }
+        super.onResume();
+    }
+
     private OnClickListener loginClick() {
         return new OnClickListener() {
             @Override
@@ -69,6 +77,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onCompleted(GraphUser user, Response response) {
                 // TODO check for errors on response
+                storeUserPreferences(user);
                 sendUserToServer(user);
             }
         });
@@ -87,7 +96,7 @@ public class LoginFragment extends Fragment {
         Log.d("MyApp", "User data to server: " + data.toString());
         // mocked successful response
         userSignup().onSuccess(null);
-        // NetworkConnection.getService().post("http://example.com/user", data.toString(), userSignup());
+        // NetworkConnection.getService().post("http://10.55.51.78:3000/", data.toString(), userSignup());
     }
 
     private NetworkResponseListener userSignup() {
@@ -103,6 +112,13 @@ public class LoginFragment extends Fragment {
                 // TODO error something...
             }
         };
+    }
+
+    private void storeUserPreferences(GraphUser user) {
+        SharedPreferences.Editor editor = mPrefs.edit();
+        editor.putString(MainActivity.FACEBOOK_USER_ID, user.getId());
+        editor.putString(MainActivity.USER_FULL_NAME, user.getName());
+        editor.commit();
     }
 
     private void moveToHomescreen() {

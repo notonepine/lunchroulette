@@ -1,5 +1,9 @@
 package com.notonepine.lunchroulette;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.json.JSONObject;
 
 import android.content.Context;
@@ -56,7 +60,6 @@ public class FinalFragment extends Fragment {
         Location location = Utils.getLocation(getActivity());
         NetworkUtils.beginSearch(userId, location.getLatitude(), location.getLongitude(), newUserFound(),
                         locationFound());
-
         return mView;
     }
 
@@ -151,6 +154,12 @@ public class FinalFragment extends Fragment {
         fadeIn(((Button) mView.findViewById(R.id.final_cancel_button_2)));
         fadeOut(((Button) mView.findViewById(R.id.final_cancel_button)));
 
+        SimpleDateFormat fmt = new SimpleDateFormat("hh:mm aa");
+        (mView.findViewById(R.id.final_map_container)).setVisibility(View.VISIBLE);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.MINUTE, 10);
+        ((TextView) mView.findViewById(R.id.final_please_meet_text)).setText("Please meet by " + fmt.format(cal.getTime()));
     }
 
     private void addPerson(String name, String url) {

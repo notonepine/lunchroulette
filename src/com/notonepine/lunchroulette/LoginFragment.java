@@ -130,7 +130,7 @@ public class LoginFragment extends Fragment {
         FragmentTransaction ft = getFragmentManager()
                         .beginTransaction()
                         .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out, android.R.anim.fade_in,
-                                        android.R.anim.fade_out).addToBackStack(null);
+                                        android.R.anim.fade_out ).addToBackStack(null);
         ft.replace(R.id.container, new HomeFragment());
         ft.commit();
     }

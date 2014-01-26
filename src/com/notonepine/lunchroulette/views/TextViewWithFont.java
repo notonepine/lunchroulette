@@ -10,17 +10,17 @@ public class TextViewWithFont extends TextView {
 
     public TextViewWithFont(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.setTypeface(LunchRouletteFragmentActivity.tf);
+        this.setTypeface(LunchRouletteFragmentActivity.openSans);
     }
 
     public TextViewWithFont(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        this.setTypeface(LunchRouletteFragmentActivity.tf);
+        this.setTypeface(LunchRouletteFragmentActivity.openSans);
     }
 
     public TextViewWithFont(Context context) {
         super(context);
-        this.setTypeface(LunchRouletteFragmentActivity.tf);
+        this.setTypeface(LunchRouletteFragmentActivity.openSans);
     }
 
 }

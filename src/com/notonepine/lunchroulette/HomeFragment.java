@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public class HomeFragment extends Fragment {
     RoundedImageView avatarImage;
     TextViewWithFont name;
     SharedPreferences mPrefs;
-    
+
     String userId;
     String userName;
 
@@ -37,16 +38,16 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onResume() {
-    	if (userId == null && userName == null) {
-    		userId = mPrefs.getString(LunchRouletteFragmentActivity.FACEBOOK_USER_ID, "");
+        if (userId == null && userName == null) {
+            userId = mPrefs.getString(LunchRouletteFragmentActivity.FACEBOOK_USER_ID, "");
             userName = mPrefs.getString(LunchRouletteFragmentActivity.FACEBOOK_FULL_NAME, "");
-    	}
+        }
 
         if (userId != "" && userName != "") {
             name.setText("Welcome, " + userName);
             String avatarUrl = Utils.getUserAvatarUrl(userId);
 
-            ImageLoader.getInstance().displayImage(avatarUrl, avatarImage);
+            ((LunchRouletteFragmentActivity) getActivity()).loader.displayImage(avatarUrl, avatarImage);
         }
         super.onResume();
     }
@@ -55,9 +56,19 @@ public class HomeFragment extends Fragment {
         return new OnClickListener() {
             @Override
             public void onClick(View view) {
-            	Location location = Utils.getLocation(HomeFragment.this.getActivity());
-            	NetworkUtils.beginSearch(userId, location.getLatitude(), location.getLongitude());
+                Location location = Utils.getLocation(HomeFragment.this.getActivity());
+                NetworkUtils.beginSearch(userId, location.getLatitude(), location.getLongitude());
+                moveToFinalScreen();
             }
         };
+    }
+
+    private void moveToFinalScreen() {
+        FragmentTransaction ft = getFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out, android.R.anim.fade_in,
+                                        android.R.anim.fade_out).addToBackStack(null);
+        ft.replace(R.id.container, new FinalFragment());
+        ft.commit();
     }
 }

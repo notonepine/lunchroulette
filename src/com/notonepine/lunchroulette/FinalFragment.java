@@ -128,6 +128,9 @@ public class FinalFragment extends Fragment {
         map.getUiSettings().setZoomControlsEnabled(false);
         map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
+        fadeOut(((LinearLayout) mView.findViewById(R.id.loading_layout)));
+        fadeIn(((LinearLayout) mView.findViewById(R.id.final_map_container)));
+
     }
 
     private void addPerson(String name, String url) {

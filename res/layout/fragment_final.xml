@@ -68,7 +68,9 @@
             android:id="@+id/person_one_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="7dp"
+            android:gravity="center"
             android:text="Vic"
             android:textColor="#FFF"
             android:textSize="18sp" />
@@ -94,7 +96,9 @@
             android:id="@+id/person_two_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="7dp"
+            android:gravity="center"
             android:text="Vic"
             android:textColor="#FFF"
             android:textSize="18sp" />
@@ -121,7 +125,9 @@
             android:id="@+id/person_three_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="7dp"
+            android:gravity="center"
             android:text="Vic"
             android:textColor="#FFF"
             android:textSize="18sp" />

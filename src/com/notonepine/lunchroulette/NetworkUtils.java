@@ -6,6 +6,9 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.content.Context;
+import android.os.Handler;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -14,6 +17,11 @@ import com.loopj.android.http.RequestParams;
 
 public class NetworkUtils {
 	private static final String baseUrl = "http://hacktech4.cloudapp.net:80";
+	private static Context sContext;
+	
+	public static void initialize(Context context) {
+		sContext = context;
+	}
 
 	public static void postUser(JSONObject user, AsyncHttpResponseHandler callback) {
 		httpClient().post(baseUrl + "/users", new RequestParams("user", user.toString()), callback);
@@ -64,10 +72,12 @@ public class NetworkUtils {
 		}
 
 		private void repoll() {
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {}
-			httpClient().get(baseUrl + "/searching_users/" + userId + "/search", this);
+			new Handler(sContext.getMainLooper()).postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					httpClient().get(baseUrl + "/searching_users/" + userId + "/search", SearchResponseHandler.this);
+				}
+			}, 5000);
 		}
 
 		@Override

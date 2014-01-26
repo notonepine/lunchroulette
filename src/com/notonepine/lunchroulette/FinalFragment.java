@@ -47,17 +47,14 @@ public class FinalFragment extends Fragment {
                 map = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
                 map.getUiSettings().setZoomControlsEnabled(false);
                 map.setMyLocationEnabled(true);
-                Location location = Utils.getLocation(FinalFragment.this.getActivity());
-                LatLng ltl = new LatLng(location.getLongitude(), location.getLatitude());
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(ltl, 16));
             }
         });
-
 
         mPrefs = getActivity().getSharedPreferences("com.notonepine.lunchroulette", Context.MODE_PRIVATE);
         String userId = mPrefs.getString(LunchRouletteFragmentActivity.USER_ID, "");
         Location location = Utils.getLocation(getActivity());
-        NetworkUtils.beginSearch(userId, location.getLatitude(), location.getLongitude(), newUserFound(), locationFound());
+        NetworkUtils.beginSearch(userId, location.getLatitude(), location.getLongitude(), newUserFound(),
+                        locationFound());
         return mView;
     }
 
@@ -88,6 +85,10 @@ public class FinalFragment extends Fragment {
                 } else if (view.getId() == R.id.person_three_layout) {
                     fadeOut(((LinearLayout) mView.findViewById(R.id.loading_layout)));
                     fadeIn(((LinearLayout) mView.findViewById(R.id.final_map_container)));
+                    
+                    Location location = Utils.getLocation(FinalFragment.this.getActivity());
+                    LatLng ltl = new LatLng(location.getLongitude(), location.getLatitude());
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(ltl, 16));
                 }
             }
         });
@@ -153,25 +154,25 @@ public class FinalFragment extends Fragment {
     }
 
     private JsonHttpResponseHandler newUserFound() {
-    	return new JsonHttpResponseHandler() {
-    		@Override
-    		public void onSuccess(JSONObject userData) {
-    			String name = userData.optString("name");
-    			String avatarUrl = Utils.getUserAvatarUrl(userData.optString("fb_id"));
-    			// do something with this
-    		}
-    	};
+        return new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(JSONObject userData) {
+                String name = userData.optString("name");
+                String avatarUrl = Utils.getUserAvatarUrl(userData.optString("fb_id"));
+                // do something with this
+            }
+        };
     }
 
     private JsonHttpResponseHandler locationFound() {
-    	return new JsonHttpResponseHandler() {
-    		@Override
-    		public void onSuccess(JSONObject restaurant) {
-    			double latitude = restaurant.optDouble("lat");
-    			double longitude = restaurant.optDouble("long");
-    			String name = restaurant.optString("name");
-    			// do something with this
-    		}
-    	};
+        return new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(JSONObject restaurant) {
+                double latitude = restaurant.optDouble("lat");
+                double longitude = restaurant.optDouble("long");
+                String name = restaurant.optString("name");
+                // do something with this
+            }
+        };
     }
 }

@@ -34,3 +34,9 @@ proguard/
 
 # Eclipse
 .settings
+
+# Django
+*.pyc
+*.pyo
+lunchroulette_web/build/
+lunchroulette_web/dist/

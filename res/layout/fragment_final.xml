@@ -17,21 +17,21 @@
         android:paddingRight="24dp"
         android:visibility="visible" >
 
-        <ProgressBar
-            android:id="@+id/final_loading_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp" />
-
         <com.notonepine.lunchroulette.views.TextViewWithFont
             android:id="@+id/final_loading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="We&apos;re doing some magic to find people for you to have lunch with"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFF" />
+
+        <ProgressBar
+            android:id="@+id/final_loading_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <com.notonepine.lunchroulette.views.TextViewWithLobster

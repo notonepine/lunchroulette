@@ -64,39 +64,8 @@ public class FinalFragment extends Fragment {
 
     private void translatePersonIn(final View view, int dist) {
         Animation anim = new TranslateAnimation(dist, 0, 0, 0);
-
         anim.setFillAfter(true);
         anim.setDuration(600);
-
-        anim.setAnimationListener(new AnimationListener() {
-
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                if (view.getId() == R.id.person_one_layout) {
-                    translatePersonIn(((LinearLayout) mView.findViewById(R.id.person_two_layout)), 400);
-                } else if (view.getId() == R.id.person_two_layout) {
-                    translatePersonIn(((LinearLayout) mView.findViewById(R.id.person_three_layout)), 200);
-                } else if (view.getId() == R.id.person_three_layout) {
-                    fadeOut(((LinearLayout) mView.findViewById(R.id.loading_layout)));
-                    fadeIn(((LinearLayout) mView.findViewById(R.id.final_map_container)));
-
-                    Location location = Utils.getLocation(FinalFragment.this.getActivity());
-                    LatLng ltl = new LatLng(location.getLongitude(), location.getLatitude());
-                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(ltl, 16));
-                }
-            }
-        });
-
         view.startAnimation(anim);
     }
 

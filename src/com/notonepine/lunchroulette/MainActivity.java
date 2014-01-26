@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.parse.Parse;
@@ -22,7 +23,7 @@ public class MainActivity extends FragmentActivity {
     private static final String PROPERTY_APP_VERSION = "appVersion";
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
-    private static final String SENDER_ID = "AIzaSyCpPbVdVvRtN_FrY1dVluroWnXHzNHDsBY";
+    private static final String SENDER_ID = "930480945207";
 
     static final String TAG = "LunchRoulette";
 
@@ -38,11 +39,14 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Parse.initialize(this, "QCYQYAaLANlJtBoohLfBhdg7C9HtFdRpCE3aVFNh", "UOaeCJzOQRwV2T9TIOVtLh3NiFVoCAMXS001yM5W");
         ParseFacebookUtils.initialize("1456402971254781");
 
         gcm = GoogleCloudMessaging.getInstance(this);
         regid = getRegistrationId(context);
+
+        Toast.makeText(this, regid, Toast.LENGTH_LONG).show();
 
         if (regid.equals("")) {
             registerInBackground();
@@ -80,21 +84,9 @@ public class MainActivity extends FragmentActivity {
                     regid = gcm.register(SENDER_ID);
                     msg = "Device registered, registration ID=" + regid;
 
-                    // You should send the registration ID to your server over HTTP, so it
-                    // can use GCM/HTTP or CCS to send messages to your app.
-                    sendRegistrationIdToBackend();
-
-                    // For this demo: we don't need to send it because the device will send
-                    // upstream messages to a server that echo back the message using the
-                    // 'from' address in the message.
-
-                    // Persist the regID - no need to register again.
                     storeRegistrationId(context, regid);
                 } catch (IOException ex) {
-                    msg = "Error :" + ex.getMessage();
-                    // If there is an error, don't just keep trying to register.
-                    // Require the user to click a button again, or perform
-                    // exponential back-off.
+                    Log.d("GCM ERROR", "Error :" + ex.getMessage());
                 }
                 return msg;
             }
@@ -104,10 +96,6 @@ public class MainActivity extends FragmentActivity {
                 // TODO: Do stuff with our message?
             }
         }.execute(null, null, null);
-    }
-
-    private void sendRegistrationIdToBackend() {
-        // Your implementation here.
     }
 
     private void storeRegistrationId(Context context, String regId) {

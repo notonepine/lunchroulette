@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -26,6 +25,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.notonepine.lunchroulette.views.RoundedImageView;
 
@@ -141,6 +141,8 @@ public class FinalFragment extends Fragment {
             map.getUiSettings().setZoomControlsEnabled(false);
             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             ((TextView) mView.findViewById(R.id.meeting_point)).setText(name);
+            map.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)));
+
         }
 
         fadeOut(((LinearLayout) mView.findViewById(R.id.loading_layout)));

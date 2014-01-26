@@ -10,11 +10,13 @@ import android.support.v4.app.Fragment;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +43,7 @@ public class FinalFragment extends Fragment {
             ViewGroup parent = (ViewGroup) mView.getParent();
             if (parent != null)
                 parent.removeView(mView);
+
         }
         try {
             mView = inflater.inflate(R.layout.fragment_final, container, false);
@@ -53,6 +56,7 @@ public class FinalFragment extends Fragment {
         Location location = Utils.getLocation(getActivity());
         NetworkUtils.beginSearch(userId, location.getLatitude(), location.getLongitude(), newUserFound(),
                         locationFound());
+
         return mView;
     }
 
@@ -122,15 +126,28 @@ public class FinalFragment extends Fragment {
      */
     private void switchStates(double latitude, double longitude, String name) {
 
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(17)
-                        .bearing(90) // Sets the orientation of the camera to east
-                        .tilt(30) // Sets the tilt of the camera to 30 degrees
-                        .build(); // Creates a CameraPosition from the builder
-        map.getUiSettings().setZoomControlsEnabled(false);
-        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        if (latitude == 0 && longitude == 0 && name == null) {
+            CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(-39, 103)).zoom(17)
+                            .bearing(90) // Sets the orientation of the camera to east
+                            .tilt(30) // Sets the tilt of the camera to 30 degrees
+                            .build(); // Creates a CameraPosition from the builder
+            map.getUiSettings().setZoomControlsEnabled(false);
+            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        } else {
+
+            CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude))
+                            .zoom(17).bearing(90) // Sets the orientation of the camera to east
+                            .tilt(30) // Sets the tilt of the camera to 30 degrees
+                            .build(); // Creates a CameraPosition from the builder
+            map.getUiSettings().setZoomControlsEnabled(false);
+            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        }
 
         fadeOut(((LinearLayout) mView.findViewById(R.id.loading_layout)));
         fadeIn(((LinearLayout) mView.findViewById(R.id.final_map_container)));
+        fadeIn(((Button) mView.findViewById(R.id.final_on_my_way_button)));
+        fadeIn(((Button) mView.findViewById(R.id.final_cancel_button_2)));
+        fadeOut(((Button) mView.findViewById(R.id.final_cancel_button)));
 
     }
 

@@ -181,15 +181,6 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/final_cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginLeft="16dp"
-        android:background="@drawable/cancel" />
-
-    <Button
         android:id="@+id/final_on_my_way_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -197,6 +188,26 @@
         android:layout_alignBottom="@+id/final_cancel_button"
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
+        android:visibility="invisible"
         android:background="@drawable/on_my_way" />
+
+    <Button
+        android:id="@+id/final_cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/cancel" />
+    
+     <Button
+        android:id="@+id/final_cancel_button_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/cancel" />
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -28,6 +29,8 @@ public class LunchRouletteFragmentActivity extends FragmentActivity {
 
     private static final String SENDER_ID = "930480945207";
 
+    public static Typeface tf;
+
     static final String TAG = "LunchRoulette";
 
     GoogleCloudMessaging gcm;
@@ -42,7 +45,7 @@ public class LunchRouletteFragmentActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        tf = Typeface.createFromAsset(getAssets(), "fonts/opensans.ttf");
         Parse.initialize(this, "QCYQYAaLANlJtBoohLfBhdg7C9HtFdRpCE3aVFNh", "UOaeCJzOQRwV2T9TIOVtLh3NiFVoCAMXS001yM5W");
         ParseFacebookUtils.initialize("1456402971254781");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
@@ -50,8 +53,6 @@ public class LunchRouletteFragmentActivity extends FragmentActivity {
 
         gcm = GoogleCloudMessaging.getInstance(this);
         regid = getRegistrationId(context);
-
-        Toast.makeText(this, regid, Toast.LENGTH_LONG).show();
 
         if (regid.equals("")) {
             registerInBackground();

@@ -13,18 +13,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.notonepine.lunchroulette.views.RoundedImageView;
+import com.notonepine.lunchroulette.views.TextViewWithFont;
 
 public class HomeFragment extends Fragment {
     View mView;
-    ImageView avatarImage;
-    TextView name;
+    RoundedImageView avatarImage;
+    TextViewWithFont name;
     SharedPreferences mPrefs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_home, container, false);
-        avatarImage = ((ImageView) mView.findViewById(R.id.home_avatar));
-        name = ((TextView) mView.findViewById(R.id.home_name));
+        avatarImage = ((RoundedImageView) mView.findViewById(R.id.home_avatar));
+        name = ((TextViewWithFont) mView.findViewById(R.id.home_welcome_text));
         mPrefs = getActivity().getSharedPreferences("com.notonepine.lunchroulette", Context.MODE_PRIVATE);
         ((Button) mView.findViewById(R.id.go_button)).setOnClickListener(searchClick());
         return mView;

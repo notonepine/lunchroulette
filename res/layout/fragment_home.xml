@@ -2,18 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/home_bg"
     android:clickable="true" >
 
-    <TextView
-        android:id="@+id/home_title"
+    <ImageView
+        android:id="@+id/home_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Lunch Roulette"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/logo" />
 
     <Button
         android:id="@+id/go_button"
@@ -22,49 +22,83 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="42dp"
-        android:text="Get Lunch" />
+        android:background="@drawable/get_lunch_2" />
 
-    <ImageView
-        android:id="@+id/home_avatar"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_below="@+id/home_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_launcher" />
-
-    <TextView
-        android:id="@+id/home_name"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/home_avatar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:layout_weight="0.79"
-        android:text="Welcome, name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="-50dp"
+        android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:text="Get ready to have an amazing lunch today"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/smoke_top" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundedcorners"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <com.notonepine.lunchroulette.views.TextViewWithFont
+                android:id="@+id/home_welcome_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="53dp"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Hello, someone"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFFFFF"
+                android:textSize="19sp" />
+            
+             <com.notonepine.lunchroulette.views.TextViewWithFont
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:textSize="17sp"
+                android:text="Get ready to have an amazing lunch today!"
+                android:textColor="#FFFFFF" />
+
+            <com.notonepine.lunchroulette.views.TextViewWithFont
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:textSize="17sp"
+                android:paddingBottom="30dp"
+                android:text="You&apos;re going to be meeting up with people we think you&apos;ll really like in 20 minutes"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ImageView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/smoke_bottom" />
+    </LinearLayout>
+
+    <com.notonepine.lunchroulette.views.RoundedImageView
+        android:id="@+id/home_avatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/home_logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:gravity="center"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:text="You&apos;re going to be meeting up with people we think you&apos;ll really like in 20 minutes" />
+        android:src="@drawable/facebook_default" />
 
 </RelativeLayout>

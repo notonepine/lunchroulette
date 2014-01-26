@@ -53,17 +53,19 @@ public class LoginFragment extends Fragment {
         return new OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Start loading animation
-                ParseFacebookUtils.logIn(fbPermissions(), getActivity(), new LogInCallback() {
-                    @Override
-                    public void done(ParseUser user, ParseException err) {
-                        if (user == null) {
-                            Log.d("MyApp", "Exception: " + err.getMessage());
-                        } else {
-                            getUserData();
-                        }
-                    }
-                });
+                moveToHomescreen();
+
+                // // TODO Start loading animation
+                // ParseFacebookUtils.logIn(fbPermissions(), getActivity(), new LogInCallback() {
+                // @Override
+                // public void done(ParseUser user, ParseException err) {
+                // if (user == null) {
+                // Log.d("MyApp", "Exception: " + err.getMessage());
+                // } else {
+                // getUserData();
+                // }
+                // }
+                // });
             }
         };
     }
@@ -106,7 +108,7 @@ public class LoginFragment extends Fragment {
                     storeUserId(new JSONObject(response).getString("id"));
                 } catch (JSONException e) { /* fuck it */
                 }
-                ;
+
                 moveToHomescreen();
             }
 

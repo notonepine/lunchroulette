@@ -55,7 +55,8 @@
         android:layout_marginTop="34dp"
         android:layout_toLeftOf="@+id/person_two_layout"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="invisible" >
 
         <com.notonepine.lunchroulette.views.RoundedImageView
             android:id="@+id/person_one_image"
@@ -129,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/person_one_layout"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="28dp"
         android:gravity="center"
         android:orientation="vertical" >
 

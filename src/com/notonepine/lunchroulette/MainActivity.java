@@ -10,8 +10,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.facebook.model.GraphUser;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
 
@@ -19,10 +23,10 @@ public class MainActivity extends FragmentActivity {
 
     public static final String EXTRA_MESSAGE = "message";
     public static final String PROPERTY_REG_ID = "registration_id";
-    private static final String PROPERTY_APP_VERSION = "appVersion";
-    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    public static final String FACEBOOK_USER_ID = "facebook_user_id";
+    public static final String USER_FULL_NAME = "user_full_name";
 
-    private static final String SENDER_ID = "AIzaSyCpPbVdVvRtN_FrY1dVluroWnXHzNHDsBY";
+    private static final String SENDER_ID = "930480945207";
 
     static final String TAG = "LunchRoulette";
 
@@ -38,11 +42,17 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Parse.initialize(this, "QCYQYAaLANlJtBoohLfBhdg7C9HtFdRpCE3aVFNh", "UOaeCJzOQRwV2T9TIOVtLh3NiFVoCAMXS001yM5W");
         ParseFacebookUtils.initialize("1456402971254781");
+        NetworkConnection.initialize(getApplicationContext());
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
+        ImageLoader.getInstance().init(config);
 
         gcm = GoogleCloudMessaging.getInstance(this);
         regid = getRegistrationId(context);
+
+        Toast.makeText(this, regid, Toast.LENGTH_LONG).show();
 
         if (regid.equals("")) {
             registerInBackground();
@@ -68,6 +78,9 @@ public class MainActivity extends FragmentActivity {
         return registrationId;
     }
 
+    /**
+     * Register with GCM
+     */
     private void registerInBackground() {
         new AsyncTask<Void, Void, String>() {
             @Override
@@ -80,36 +93,26 @@ public class MainActivity extends FragmentActivity {
                     regid = gcm.register(SENDER_ID);
                     msg = "Device registered, registration ID=" + regid;
 
-                    // You should send the registration ID to your server over HTTP, so it
-                    // can use GCM/HTTP or CCS to send messages to your app.
-                    sendRegistrationIdToBackend();
-
-                    // For this demo: we don't need to send it because the device will send
-                    // upstream messages to a server that echo back the message using the
-                    // 'from' address in the message.
-
-                    // Persist the regID - no need to register again.
                     storeRegistrationId(context, regid);
                 } catch (IOException ex) {
-                    msg = "Error :" + ex.getMessage();
-                    // If there is an error, don't just keep trying to register.
-                    // Require the user to click a button again, or perform
-                    // exponential back-off.
+                    Log.d("GCM ERROR", "Error :" + ex.getMessage());
                 }
                 return msg;
             }
 
             @Override
             protected void onPostExecute(String msg) {
-                // TODO: Do stuff with our message?
+                // TODO: Do stuff with our message? I dont think this is necessary.
             }
         }.execute(null, null, null);
     }
 
-    private void sendRegistrationIdToBackend() {
-        // Your implementation here.
-    }
-
+    /**
+     * Store the registration id in our preferences to recall later, when we send facebook login info.
+     * 
+     * @param context
+     * @param regId
+     */
     private void storeRegistrationId(Context context, String regId) {
         final SharedPreferences prefs = getGCMPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
@@ -121,9 +124,8 @@ public class MainActivity extends FragmentActivity {
      * @return Application's {@code SharedPreferences}.
      */
     private SharedPreferences getGCMPreferences(Context context) {
-        // This sample app persists the registration ID in shared preferences, but
-        // how you store the regID in your app is up to you.
-        return getSharedPreferences(MainActivity.class.getSimpleName(), Context.MODE_PRIVATE);
+
+        return getSharedPreferences("com.notonepine.lunchroulette", Context.MODE_PRIVATE);
     }
 
     @Override

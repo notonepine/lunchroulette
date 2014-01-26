@@ -16,100 +16,90 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class NetworkUtils {
-    private static final String baseUrl = "http://hacktech4.cloudapp.net:80";
-    private static Context sContext;
+	private static final String baseUrl = "http://hacktech4.cloudapp.net:80";
+	private static Context sContext;
+	
+	public static void initialize(Context context) {
+		sContext = context;
+	}
 
-    public static void initialize(Context context) {
-        sContext = context;
-    }
+	public static void postUser(JSONObject user, AsyncHttpResponseHandler callback) {
+		httpClient().post(baseUrl + "/users", new RequestParams("user", user.toString()), callback);
+	}
 
-    public static void postUser(JSONObject user, AsyncHttpResponseHandler callback) {
-        httpClient().post(baseUrl + "/users", new RequestParams("user", user.toString()), callback);
-    }
+	public static void beginSearch(final String userId, double latitude, double longitude, final JsonHttpResponseHandler newUserHandler, final JsonHttpResponseHandler locationHandler) {
+		RequestParams params = new RequestParams();
+		params.put("id", userId);
+		params.put("latitude", Double.valueOf(latitude).toString());
+		params.put("longitude", Double.valueOf(longitude).toString());
+		// Create the search
+		httpClient().post(baseUrl + "/searching_users", params, new AsyncHttpResponseHandler() {
+			@Override
+			public void onSuccess(String response) {
+				pollSearch(userId, newUserHandler, locationHandler);
+			}
+		});
+	}
 
-    public static void beginSearch(final String userId, double latitude, double longitude,
-                    final JsonHttpResponseHandler newUserHandler, final JsonHttpResponseHandler locationHandler) {
-        RequestParams params = new RequestParams();
-        params.put("id", userId);
-        params.put("latitude", latitude);
-        params.put("longitude", longitude);
-        // Create the search
-        httpClient().post(baseUrl + "/searching_users", params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(String response) {
-                pollSearch(userId, newUserHandler, locationHandler);
-            }
-        });
-    }
+	public static void getUserInfo(final String userId, final JsonHttpResponseHandler callback) {
+		httpClient().get(baseUrl + "/users/" + userId, callback);
+	}
 
-    public static void getUserInfo(final String userId, final JsonHttpResponseHandler callback) {
-        httpClient().get(baseUrl + "/users/" + userId, callback);
-    }
+	private static AsyncHttpClient httpClient() {
+		AsyncHttpClient client = new AsyncHttpClient();
+		client.addHeader("Content-Type", "application/json");
+		return client;
+	}
 
-    private static AsyncHttpClient httpClient() {
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.addHeader("Content-Type", "application/json");
-        return client;
-    }
+	private static void pollSearch(String userId, JsonHttpResponseHandler newUserHandler, JsonHttpResponseHandler locationHandler) {
+		SearchResponseHandler searchHandler = new SearchResponseHandler(userId, newUserHandler, locationHandler);
+		httpClient().get(baseUrl + "/searching_users/" + userId + "/search", searchHandler);
+	}
 
-    private static void pollSearch(String userId, JsonHttpResponseHandler newUserHandler,
-                    JsonHttpResponseHandler locationHandler) {
-        SearchResponseHandler searchHandler = new SearchResponseHandler(userId, newUserHandler, locationHandler);
-        httpClient().get(baseUrl + "/searching_users/" + userId + "/search", searchHandler);
+	private static class SearchResponseHandler extends JsonHttpResponseHandler {
+		JsonHttpResponseHandler newUserHandler;
+		JsonHttpResponseHandler locationHandler;
 
-    }
+		String userId;
+		List<Integer> ids = new ArrayList<Integer>();
 
-    private static class SearchResponseHandler extends JsonHttpResponseHandler {
-        JsonHttpResponseHandler newUserHandler;
-        JsonHttpResponseHandler locationHandler;
+		public SearchResponseHandler(String userId, JsonHttpResponseHandler newUserHandler, JsonHttpResponseHandler locationHandler) {
+			this.userId = userId;
+			this.newUserHandler = newUserHandler;
+			this.locationHandler = locationHandler;
+		}
 
-        String userId;
-        List<Integer> ids = new ArrayList<Integer>();
+		private void repoll() {
+			new Handler(sContext.getMainLooper()).postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					httpClient().get(baseUrl + "/searching_users/" + userId + "/search", SearchResponseHandler.this);
+				}
+			}, 5000);
+		}
 
-        public SearchResponseHandler(String userId, JsonHttpResponseHandler newUserHandler,
-                        JsonHttpResponseHandler locationHandler) {
-            this.userId = userId;
-            this.newUserHandler = newUserHandler;
-            this.locationHandler = locationHandler;
-        }
+		@Override
+		public void onSuccess(JSONObject response) {
+			JSONObject restaurant = response.optJSONObject("restaurant");
 
-        private void repoll() {
-            new Handler(sContext.getMainLooper()).postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    httpClient().get(baseUrl + "/searching_users/" + userId + "/search", SearchResponseHandler.this);
-                }
-            }, 5000);
-        }
+			checkNewUsers(response.optJSONArray("matches"));
 
-        @Override
-        public void onSuccess(JSONObject response) {
-            JSONObject restaurant = response.optJSONObject("restaurant");
+			if (restaurant != null) {
+				locationHandler.onSuccess(restaurant);
+			} else {
+				// wait and do it again
+				repoll();
+			}
+		}
 
-            checkNewUsers(response.optJSONArray("matches"));
-
-            if (restaurant != null) {
-                locationHandler.onSuccess(restaurant);
-            } else {
-                // wait and do it again
-                repoll();
-            }
-        }
-        
-        @Override
-        public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
-            // TODO Auto-generated method stub
-            super.onFailure(arg0, arg1, arg2, arg3);
-        }
-
-        private void checkNewUsers(JSONArray idsArray) {
-            for (int i = 0; i < idsArray.length(); i++) {
-                Integer id = Integer.valueOf(idsArray.optInt(i));
-                if (ids.indexOf(id) == -1) {
-                    NetworkUtils.getUserInfo(id.toString(), newUserHandler);
-                    ids.add(id);
-                }
-            }
-        }
-    }
+		private void checkNewUsers(JSONArray idsArray) {
+			for (int i = 0; i < idsArray.length(); i++) {
+				Integer id = Integer.valueOf(idsArray.optInt(i));
+				if (ids.indexOf(id) == -1) {
+					NetworkUtils.getUserInfo(id.toString(), newUserHandler);
+					ids.add(id);
+				}
+			}
+		}
+	}
 }

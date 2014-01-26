@@ -37,13 +37,6 @@ public class FinalFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_final, container, false);
-        ((Button) mView.findViewById(R.id.final_cancel_button)).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                translatePersonIn(((LinearLayout) mView.findViewById(R.id.person_one_layout)), 600);
-            }
-        });
-
         mView.post(new Runnable() {
 
             @Override

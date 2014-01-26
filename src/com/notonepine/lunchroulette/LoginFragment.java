@@ -92,8 +92,6 @@ public class LoginFragment extends Fragment {
             // TODO Probably do something about this.
             e.printStackTrace();
         }
-        Log.d("MyApp", "User data to server: " + data.toString());
-
         NetworkUtils.postUser(data, userSignup());
     }
 
@@ -103,8 +101,7 @@ public class LoginFragment extends Fragment {
             public void onSuccess(String response) {
                 try {
                     storeUserId(new JSONObject(response).getString("id"));
-                } catch (JSONException e) { /* fuck it */
-                }
+                } catch (JSONException e) { /* fuck it */ };
 
                 moveToHomescreen();
             }
@@ -137,5 +134,4 @@ public class LoginFragment extends Fragment {
         ft.replace(R.id.container, new HomeFragment());
         ft.commit();
     }
-
 }

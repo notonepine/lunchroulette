@@ -2,6 +2,7 @@ package com.notonepine.lunchroulette;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,9 @@ public class HomeFragment extends Fragment {
     RoundedImageView avatarImage;
     TextViewWithFont name;
     SharedPreferences mPrefs;
+    
+    String userId;
+    String userName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,8 +37,11 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onResume() {
-        String userId = mPrefs.getString(LunchRouletteFragmentActivity.FACEBOOK_USER_ID, "");
-        String userName = mPrefs.getString(LunchRouletteFragmentActivity.FACEBOOK_FULL_NAME, "");
+    	if (userId == null && userName == null) {
+    		userId = mPrefs.getString(LunchRouletteFragmentActivity.FACEBOOK_USER_ID, "");
+            userName = mPrefs.getString(LunchRouletteFragmentActivity.FACEBOOK_FULL_NAME, "");
+    	}
+
         if (userId != "" && userName != "") {
             name.setText("Welcome, " + userName);
             String avatarUrl = Utils.getUserAvatarUrl(userId);
@@ -48,6 +55,8 @@ public class HomeFragment extends Fragment {
         return new OnClickListener() {
             @Override
             public void onClick(View view) {
+            	Location location = Utils.getLocation(HomeFragment.this.getActivity());
+            	NetworkUtils.beginSearch(userId, location.getLatitude(), location.getLongitude());
             }
         };
     }

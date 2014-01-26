@@ -1,0 +1,216 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1058" measuredH="1231" mockupW="963" mockupH="1211">
+  <controls>
+    <control controlID="1" controlTypeID="__group__" x="95" y="42" w="495" h="573" measuredW="495" measuredH="573" zOrder="0" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="573" zOrder="0" locked="false" isInGroup="1">
+          <controlProperties>
+            <model>IPhone5</model>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="73" y="120" w="-1" h="-1" measuredW="137" measuredH="28" zOrder="1" locked="false" isInGroup="1">
+          <controlProperties>
+            <size>20</size>
+            <text>Lunch%20Roulette</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Paragraph" x="66" y="191" w="151" h="56" measuredW="200" measuredH="80" zOrder="2" locked="false" isInGroup="1">
+          <controlProperties>
+            <text>Lunch%20Roullete%20finds%20you%20awesome%20people%20to%20have%20a%20great%20lunch%20with.</text>
+          </controlProperties>
+        </control>
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="73" y="426" w="-1" h="-1" measuredW="144" measuredH="48" zOrder="3" locked="false" isInGroup="1">
+          <controlProperties>
+            <icon>FacebookIcon%7Clarge</icon>
+            <text>Get%20Started</text>
+          </controlProperties>
+        </control>
+        <control controlID="6" controlTypeID="com.balsamiq.mockups::StickyNote" x="386" y="407" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="1">
+          <controlProperties>
+            <text>Get%20started%20initiates%20a%20Facebook%20login%20process.</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="2" controlTypeID="__group__" x="95" y="658" w="282" h="573" measuredW="282" measuredH="573" zOrder="1" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="573" zOrder="0" locked="false" isInGroup="2">
+          <controlProperties>
+            <model>IPhone5</model>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="73" y="120" w="-1" h="-1" measuredW="137" measuredH="28" zOrder="1" locked="false" isInGroup="2">
+          <controlProperties>
+            <size>20</size>
+            <text>Lunch%20Roulette</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Paragraph" x="39" y="256" w="204" h="174" measuredW="200" measuredH="80" zOrder="2" locked="false" isInGroup="2">
+          <controlProperties>
+            <align>center</align>
+            <text>Get%20ready%20to%20have%20an%20amazing%20lunch%20today.%0A%20%0AYou%27re%20going%20to%20be%20meeting%20up%20with%20people%20we%20think%20you%27ll%20really%20like%20in%20the%20next%2020%20minutes.</text>
+          </controlProperties>
+        </control>
+        <control controlID="9" controlTypeID="__group__" x="100" y="445" w="83" h="27" measuredW="83" measuredH="27" zOrder="3" locked="false" isInGroup="2">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::Button" x="0" y="0" w="-1" h="-1" measuredW="83" measuredH="27" zOrder="0" locked="false" isInGroup="9">
+              <controlProperties>
+                <text>Get%20Lunch</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="11" controlTypeID="com.balsamiq.mockups::Icon" x="117" y="161" w="-1" h="-1" measuredW="48" measuredH="48" zOrder="4" locked="false" isInGroup="2">
+          <controlProperties>
+            <icon>ContactIcon%7Clarge</icon>
+          </controlProperties>
+        </control>
+        <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="89" y="209" w="-1" h="-1" measuredW="108" measuredH="21" zOrder="5" locked="false" isInGroup="2">
+          <controlProperties>
+            <text>Welcome%20Valentin%2C</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="3" controlTypeID="__group__" x="494" y="658" w="564" h="573" measuredW="564" measuredH="573" zOrder="2" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="573" zOrder="0" locked="false" isInGroup="3">
+          <controlProperties>
+            <model>IPhone5</model>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="35" y="119" w="-1" h="-1" measuredW="208" measuredH="26" zOrder="1" locked="false" isInGroup="3">
+          <controlProperties>
+            <size>18</size>
+            <text>What%20do%20you%20want%20to%20eat%3F</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Paragraph" x="35" y="160" w="204" h="50" measuredW="200" measuredH="80" zOrder="2" locked="false" isInGroup="3">
+          <controlProperties>
+            <align>center</align>
+            <text>We%20want%20to%20make%20sure%20you%20really%20like%20where%20you%27re%20going%20to%20eat.%0ASelect%20some%20food%20choices%20below.</text>
+          </controlProperties>
+        </control>
+        <control controlID="9" controlTypeID="__group__" x="55" y="445" w="172" h="27" measuredW="172" measuredH="27" zOrder="3" locked="false" isInGroup="3">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::Button" x="89" y="0" w="83" h="27" measuredW="75" measuredH="27" zOrder="0" locked="false" isInGroup="9">
+              <controlProperties>
+                <text>Continue</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="0" y="0" w="83" h="27" measuredW="51" measuredH="27" zOrder="1" locked="false" isInGroup="9">
+              <controlProperties>
+                <text>Back</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="11" controlTypeID="__group__" x="47" y="225" w="176" h="141" measuredW="176" measuredH="141" zOrder="4" locked="false" isInGroup="3">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::IconLabel" x="0" y="0" w="-1" h="-1" measuredW="59" measuredH="24" zOrder="0" locked="false" isInGroup="11">
+              <controlProperties>
+                <icon>CheckMarkIcon%7Csmall</icon>
+                <labelPosition>right</labelPosition>
+                <text>Sushi</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::IconLabel" x="103" y="0" w="-1" h="-1" measuredW="73" measuredH="24" zOrder="1" locked="false" isInGroup="11">
+              <controlProperties>
+                <icon>CheckMarkIcon%7Csmall</icon>
+                <labelPosition>right</labelPosition>
+                <text>Burgers</text>
+              </controlProperties>
+            </control>
+            <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="0" y="39" w="-1" h="-1" measuredW="75" measuredH="24" zOrder="2" locked="false" isInGroup="11">
+              <controlProperties>
+                <icon>CheckMarkIcon%7Csmall</icon>
+                <labelPosition>right</labelPosition>
+                <text>Chinese</text>
+              </controlProperties>
+            </control>
+            <control controlID="3" controlTypeID="com.balsamiq.mockups::IconLabel" x="103" y="39" w="-1" h="-1" measuredW="67" measuredH="24" zOrder="3" locked="false" isInGroup="11">
+              <controlProperties>
+                <icon>CheckMarkIcon%7Csmall</icon>
+                <labelPosition>right</labelPosition>
+                <text>Filipino</text>
+              </controlProperties>
+            </control>
+            <control controlID="4" controlTypeID="com.balsamiq.mockups::IconLabel" x="0" y="78" w="-1" h="-1" measuredW="61" measuredH="24" zOrder="4" locked="false" isInGroup="11">
+              <controlProperties>
+                <icon>CheckMarkIcon%7Csmall</icon>
+                <labelPosition>right</labelPosition>
+                <text>Pizza</text>
+              </controlProperties>
+            </control>
+            <control controlID="5" controlTypeID="com.balsamiq.mockups::IconLabel" x="103" y="78" w="-1" h="-1" measuredW="64" measuredH="24" zOrder="5" locked="false" isInGroup="11">
+              <controlProperties>
+                <icon>CheckMarkIcon%7Csmall</icon>
+                <labelPosition>right</labelPosition>
+                <text>Indian</text>
+              </controlProperties>
+            </control>
+            <control controlID="6" controlTypeID="com.balsamiq.mockups::IconLabel" x="0" y="117" w="-1" h="-1" measuredW="66" measuredH="24" zOrder="6" locked="false" isInGroup="11">
+              <controlProperties>
+                <icon>CheckMarkIcon%7Csmall</icon>
+                <labelPosition>right</labelPosition>
+                <text>Cuban</text>
+              </controlProperties>
+            </control>
+            <control controlID="7" controlTypeID="com.balsamiq.mockups::IconLabel" x="103" y="117" w="-1" h="-1" measuredW="61" measuredH="24" zOrder="7" locked="false" isInGroup="11">
+              <controlProperties>
+                <icon>CheckMarkIcon%7Csmall</icon>
+                <labelPosition>right</labelPosition>
+                <text>Polish</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="13" controlTypeID="com.balsamiq.mockups::StickyNote" x="297" y="407" w="267" h="123" measuredW="109" measuredH="123" zOrder="5" locked="false" isInGroup="3">
+          <controlProperties>
+            <text>If%20the%20list%20gets%20too%20big%2C%20which%20it%20probably%20will%2C%20the%20navigation%20buttons%20should%20always%20be%20on%20top.</text>
+          </controlProperties>
+        </control>
+        <control controlID="14" controlTypeID="com.balsamiq.mockups::StickyNote" x="328" y="20" w="236" h="186" measuredW="109" measuredH="123" zOrder="6" locked="false" isInGroup="3">
+          <controlProperties>
+            <text>The%20categories%20should%20be%20generated%20by%20the%20server%20based%20on%20proximity%20of%20availible%20choices.%0A%20%0ABy%20default%20all%20categories%20should%20be%20selected.%20This%20is%20to%20encourage%20users%20not%20NOT%20filter%20too%20much%20to%20get%20good%20search%20results.</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="4" controlTypeID="__group__" x="633" y="20" w="282" h="573" measuredW="282" measuredH="573" zOrder="3" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="573" zOrder="0" locked="false" isInGroup="4">
+          <controlProperties>
+            <model>IPhone5</model>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="84" y="122" w="-1" h="-1" measuredW="126" measuredH="28" zOrder="1" locked="false" isInGroup="4">
+          <controlProperties>
+            <size>20</size>
+            <text>Link%20Pinterest</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Paragraph" x="49" y="220" w="178" h="56" measuredW="200" measuredH="80" zOrder="2" locked="false" isInGroup="4">
+          <controlProperties>
+            <text>We%20can%20use%20your%20Pins%20on%20Pintrest%20to%20help%20find%20places%20you%20like%20to%20eat.</text>
+          </controlProperties>
+        </control>
+        <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="49" y="335" w="-1" h="-1" measuredW="185" measuredH="32" zOrder="3" locked="false" isInGroup="4">
+          <controlProperties>
+            <icon>PushPinIcon%7Cmedium</icon>
+            <text>Connect%20with%20Pintrest</text>
+          </controlProperties>
+        </control>
+        <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="111" y="398" w="64" h="27" measuredW="48" measuredH="27" zOrder="4" locked="false" isInGroup="4">
+          <controlProperties>
+            <text>Skip</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Arrow" x="412" y="970" w="52" h="10" measuredW="150" measuredH="100" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <leftArrow>false</leftArrow>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

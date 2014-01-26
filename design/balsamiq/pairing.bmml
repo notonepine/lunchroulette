@@ -1,6 +1,6 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="841" measuredH="3687" mockupW="781" mockupH="3667">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1354" measuredH="3687" mockupW="1294" mockupH="3667">
   <controls>
-    <control controlID="14" controlTypeID="__group__" x="60" y="20" w="550" h="573" measuredW="550" measuredH="573" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="14" controlTypeID="__group__" x="60" y="20" w="659" h="573" measuredW="659" measuredH="573" zOrder="0" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
         <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="573" zOrder="0" locked="false" isInGroup="14">
           <controlProperties>
@@ -35,6 +35,11 @@
         <control controlID="4" controlTypeID="com.balsamiq.mockups::StickyNote" x="334" y="421" w="216" h="123" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="14">
           <controlProperties>
             <text>Cancel%20button%20will%20allow%20the%20user%20to%20go%20back%20to%20the%20home%20screen%20WITHOUT%20reprocusions</text>
+          </controlProperties>
+        </control>
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::StickyNote" x="335" y="229" w="324" h="123" measuredW="109" measuredH="123" zOrder="5" locked="false" isInGroup="14">
+          <controlProperties>
+            <text>If%20no%20notifications%20come%20back%20from%20the%20server%20after%20a%20predetermined%20time%2C%20assume%20something%20went%20wrong%20with%20the%20server%20and%20boot%20the%20user%20back%20to%20the%20home%20screen%20possibly%20with%20an%20error%20message.</text>
           </controlProperties>
         </control>
       </groupChildrenDescriptors>
@@ -149,7 +154,7 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="18" controlTypeID="__group__" x="60" y="1876" w="550" h="573" measuredW="561" measuredH="573" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="18" controlTypeID="__group__" x="60" y="1876" w="550" h="573" measuredW="550" measuredH="573" zOrder="3" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
         <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="573" zOrder="0" locked="false" isInGroup="18">
           <controlProperties>
@@ -290,6 +295,23 @@
             <text>Cancel%20button%20should%20slide%20over%20to%20make%20room%20for%20on%20my%20way.</text>
           </controlProperties>
         </control>
+        <control controlID="20" controlTypeID="com.balsamiq.mockups::IconLabel" x="347" y="70" w="-1" h="-1" measuredW="48" measuredH="63" zOrder="14" locked="false" isInGroup="19">
+          <controlProperties>
+            <icon>ContactIcon%7Clarge</icon>
+            <text>Vic</text>
+          </controlProperties>
+        </control>
+        <control controlID="22" controlTypeID="com.balsamiq.mockups::Label" x="347" y="133" w="-1" h="-1" measuredW="55" measuredH="21" zOrder="15" locked="false" isInGroup="19">
+          <controlProperties>
+            <text>En%20Route</text>
+          </controlProperties>
+        </control>
+        <control controlID="23" controlTypeID="com.balsamiq.mockups::StickyNote" x="467" y="60" w="167" h="123" measuredW="109" measuredH="123" zOrder="16" locked="false" isInGroup="19">
+          <controlProperties>
+            <align>center</align>
+            <text>When%20a%20user%20inciates%20they%20are%20on%20their%20way%2C%20their%20facecard%20changes%20to%20this</text>
+          </controlProperties>
+        </control>
       </groupChildrenDescriptors>
     </control>
     <control controlID="24" controlTypeID="__group__" x="60" y="3114" w="611" h="573" measuredW="611" measuredH="573" zOrder="5" locked="false" isInGroup="-1">
@@ -360,7 +382,7 @@
             <text>Confim%20Cancellation%0AIf%20you%20cancel%20now%2C%20you%20won%27t%20be%20able%20to%20use%20Lunch%20Roulette%20for%20*15%20minutes*.%0ACancel%20Lunch%2C%20Have%20lunch</text>
           </controlProperties>
         </control>
-        <control controlID="23" controlTypeID="com.balsamiq.mockups::StickyNote" x="340" y="82" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="13" locked="false" isInGroup="24">
+        <control controlID="23" controlTypeID="com.balsamiq.mockups::StickyNote" x="340" y="82" w="154" h="123" measuredW="109" measuredH="123" zOrder="13" locked="false" isInGroup="24">
           <controlProperties>
             <text>Cancellation%20diagloue%20box.%20These%20are%20the%20fabelled%20reprocusions.</text>
           </controlProperties>
@@ -376,6 +398,138 @@
           </controlProperties>
         </control>
       </groupChildrenDescriptors>
+    </control>
+    <control controlID="25" controlTypeID="__group__" x="866" y="2485" w="282" h="573" measuredW="282" measuredH="573" zOrder="6" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="0" y="0" w="-1" h="-1" measuredW="282" measuredH="573" zOrder="0" locked="false" isInGroup="25">
+          <controlProperties>
+            <model>IPhone5</model>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="54" y="443" w="79" h="27" measuredW="64" measuredH="27" zOrder="1" locked="false" isInGroup="25">
+          <controlProperties>
+            <text>Cancel</text>
+          </controlProperties>
+        </control>
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="33" y="109" w="208" h="-1" measuredW="173" measuredH="24" zOrder="2" locked="false" isInGroup="25">
+          <controlProperties>
+            <align>center</align>
+            <size>16</size>
+            <text>You%27re%20having%20lunch%20with</text>
+          </controlProperties>
+        </control>
+        <control controlID="8" controlTypeID="com.balsamiq.mockups::IconLabel" x="61" y="141" w="-1" h="-1" measuredW="48" measuredH="63" zOrder="3" locked="false" isInGroup="25">
+          <controlProperties>
+            <icon>ContactIcon%7Clarge</icon>
+            <text>Vic</text>
+          </controlProperties>
+        </control>
+        <control controlID="10" controlTypeID="com.balsamiq.mockups::IconLabel" x="117" y="141" w="-1" h="-1" measuredW="48" measuredH="63" zOrder="4" locked="false" isInGroup="25">
+          <controlProperties>
+            <icon>ContactIcon%7Clarge</icon>
+            <text>Adam</text>
+          </controlProperties>
+        </control>
+        <control controlID="11" controlTypeID="com.balsamiq.mockups::IconLabel" x="173" y="141" w="-1" h="-1" measuredW="48" measuredH="63" zOrder="5" locked="false" isInGroup="25">
+          <controlProperties>
+            <icon>ContactIcon%7Clarge</icon>
+            <text>Josh</text>
+          </controlProperties>
+        </control>
+        <control controlID="13" controlTypeID="com.balsamiq.mockups::Label" x="37" y="219" w="208" h="-1" measuredW="129" measuredH="24" zOrder="6" locked="false" isInGroup="25">
+          <controlProperties>
+            <align>center</align>
+            <size>16</size>
+            <text>You%27ll%20be%20eating%20at</text>
+          </controlProperties>
+        </control>
+        <control controlID="14" controlTypeID="com.balsamiq.mockups::Label" x="104" y="243" w="-1" h="-1" measuredW="75" measuredH="21" zOrder="7" locked="false" isInGroup="25">
+          <controlProperties>
+            <bold>true</bold>
+            <text>Chez%20Albert</text>
+          </controlProperties>
+        </control>
+        <control controlID="15" controlTypeID="com.balsamiq.mockups::Map" x="34" y="264" w="211" h="129" measuredW="252" measuredH="222" zOrder="8" locked="false" isInGroup="25"/>
+        <control controlID="17" controlTypeID="com.balsamiq.mockups::Button" x="141" y="443" w="-1" h="-1" measuredW="87" measuredH="27" zOrder="9" locked="false" isInGroup="25">
+          <controlProperties>
+            <text>On%20my%20way</text>
+          </controlProperties>
+        </control>
+        <control controlID="18" controlTypeID="com.balsamiq.mockups::Label" x="54" y="408" w="-1" h="-1" measuredW="174" measuredH="24" zOrder="10" locked="false" isInGroup="25">
+          <controlProperties>
+            <size>16</size>
+            <text>Please%20meet%20by%204%3A20pm</text>
+          </controlProperties>
+        </control>
+        <control controlID="33" controlTypeID="com.balsamiq.mockups::Arrow" x="81" y="204" w="10" h="38" measuredW="150" measuredH="100" zOrder="11" locked="false" isInGroup="25">
+          <controlProperties>
+            <rightArrow>false</rightArrow>
+          </controlProperties>
+        </control>
+        <control controlID="34" controlTypeID="__group__" x="40" y="217" w="202" h="178" measuredW="202" measuredH="178" zOrder="12" locked="false" isInGroup="25">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="202" h="178" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="34">
+              <controlProperties>
+                <borderStyle>roundedSolid</borderStyle>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::Paragraph" x="15" y="9" w="174" h="15" measuredW="200" measuredH="80" zOrder="1" locked="false" isInGroup="34">
+              <controlProperties>
+                <text>Shared%20Friends</text>
+              </controlProperties>
+            </control>
+            <control controlID="2" controlTypeID="__group__" x="23" y="26" w="157" h="131" measuredW="157" measuredH="131" zOrder="2" locked="false" isInGroup="34">
+              <groupChildrenDescriptors>
+                <control controlID="0" controlTypeID="com.balsamiq.mockups::IconLabel" x="0" y="0" w="-1" h="-1" measuredW="34" measuredH="47" zOrder="0" locked="false" isInGroup="2">
+                  <controlProperties>
+                    <icon>ContactIcon%7Cmedium</icon>
+                    <text>Mindy</text>
+                  </controlProperties>
+                </control>
+                <control controlID="1" controlTypeID="com.balsamiq.mockups::IconLabel" x="63" y="0" w="-1" h="-1" measuredW="34" measuredH="47" zOrder="1" locked="false" isInGroup="2">
+                  <controlProperties>
+                    <icon>ContactIcon%7Cmedium</icon>
+                    <text>Cindy</text>
+                  </controlProperties>
+                </control>
+                <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="125" y="0" w="-1" h="-1" measuredW="32" measuredH="47" zOrder="2" locked="false" isInGroup="2">
+                  <controlProperties>
+                    <icon>ContactIcon%7Cmedium</icon>
+                    <text>Sara</text>
+                  </controlProperties>
+                </control>
+                <control controlID="3" controlTypeID="com.balsamiq.mockups::IconLabel" x="0" y="84" w="-1" h="-1" measuredW="53" measuredH="47" zOrder="3" locked="false" isInGroup="2">
+                  <controlProperties>
+                    <icon>ContactIcon%7Cmedium</icon>
+                    <text>Pokemon</text>
+                  </controlProperties>
+                </control>
+                <control controlID="4" controlTypeID="com.balsamiq.mockups::IconLabel" x="63" y="84" w="-1" h="-1" measuredW="36" measuredH="47" zOrder="4" locked="false" isInGroup="2">
+                  <controlProperties>
+                    <icon>ContactIcon%7Cmedium</icon>
+                    <text>BDSM</text>
+                  </controlProperties>
+                </control>
+              </groupChildrenDescriptors>
+            </control>
+            <control controlID="3" controlTypeID="com.balsamiq.mockups::Paragraph" x="15" y="88" w="174" h="15" measuredW="200" measuredH="80" zOrder="3" locked="false" isInGroup="34">
+              <controlProperties>
+                <text>Shared%20Interests</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::StickyNote" x="1175" y="2656" w="179" h="123" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Clicking%20the%20person%20again%20or%20clicking%20outside%20of%20the%20overlay%20will%20close%20the%20overlay</text>
+      </controlProperties>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::StickyNote" x="1172" y="2794" w="179" h="123" measuredW="109" measuredH="123" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20shared%20stuff%20should%20be%20scrollable%20and%20not%20just%20display%20one%20line</text>
+      </controlProperties>
     </control>
   </controls>
 </mockup>

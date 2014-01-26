@@ -56,8 +56,6 @@ public class HomeFragment extends Fragment {
         return new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Location location = Utils.getLocation(HomeFragment.this.getActivity());
-                NetworkUtils.beginSearch(userId, location.getLatitude(), location.getLongitude());
                 moveToFinalScreen();
             }
         };

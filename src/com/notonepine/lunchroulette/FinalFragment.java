@@ -1,5 +1,11 @@
 package com.notonepine.lunchroulette;
 
+import org.json.JSONObject;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +28,7 @@ import com.google.android.gms.maps.model.LatLng;
 public class FinalFragment extends Fragment {
     View mView;
     private GoogleMap map;
+    SharedPreferences mPrefs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +53,11 @@ public class FinalFragment extends Fragment {
             }
         });
 
+
+        mPrefs = getActivity().getSharedPreferences("com.notonepine.lunchroulette", Context.MODE_PRIVATE);
+        String userId = mPrefs.getString(LunchRouletteFragmentActivity.USER_ID, "");
+        Location location = Utils.getLocation(getActivity());
+        NetworkUtils.beginSearch(userId, location.getLatitude(), location.getLongitude(), newUserFound(), locationFound());
         return mView;
     }
 
@@ -140,4 +152,26 @@ public class FinalFragment extends Fragment {
 
     }
 
+    private JsonHttpResponseHandler newUserFound() {
+    	return new JsonHttpResponseHandler() {
+    		@Override
+    		public void onSuccess(JSONObject userData) {
+    			String name = userData.optString("name");
+    			String avatarUrl = Utils.getUserAvatarUrl(userData.optString("fb_id"));
+    			// do something with this
+    		}
+    	};
+    }
+
+    private JsonHttpResponseHandler locationFound() {
+    	return new JsonHttpResponseHandler() {
+    		@Override
+    		public void onSuccess(JSONObject restaurant) {
+    			double latitude = restaurant.optDouble("lat");
+    			double longitude = restaurant.optDouble("long");
+    			String name = restaurant.optString("name");
+    			// do something with this
+    		}
+    	};
+    }
 }

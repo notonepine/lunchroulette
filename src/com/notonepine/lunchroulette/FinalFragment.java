@@ -17,6 +17,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -154,7 +155,12 @@ public class FinalFragment extends Fragment {
             ((LunchRouletteFragmentActivity) getActivity()).loader.displayImage(url,
                             ((RoundedImageView) mView.findViewById(R.id.person_three_image)));
             translatePersonIn(((LinearLayout) mView.findViewById(R.id.person_three_layout)), 200);
-
+            break;
+        case 4:
+            Toast.makeText(getActivity(), "Hold on we somehow got 4 matches", Toast.LENGTH_LONG).show();
+            break;
+        case 5:
+            Toast.makeText(getActivity(), "5 Matches. Magic afoot", Toast.LENGTH_LONG).show();
             break;
         }
     }

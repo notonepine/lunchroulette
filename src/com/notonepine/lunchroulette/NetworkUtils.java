@@ -53,9 +53,8 @@ public class NetworkUtils {
 
 	private static void pollSearch(String userId, JsonHttpResponseHandler newUserHandler, JsonHttpResponseHandler locationHandler) {
 		SearchResponseHandler searchHandler = new SearchResponseHandler(userId, newUserHandler, locationHandler);
-		while (true) {
 			httpClient().get(baseUrl + "/searching_users/" + userId + "/search", searchHandler);
-		}
+		
 	}
 
 	private static class SearchResponseHandler extends JsonHttpResponseHandler {

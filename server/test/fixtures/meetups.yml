@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  latitude: 
+  longitude: 
+  restaurant_latitude: 
+  restaurant_longitude: 
+
+two:
+  latitude: 
+  longitude: 
+  restaurant_latitude: 
+  restaurant_longitude: 

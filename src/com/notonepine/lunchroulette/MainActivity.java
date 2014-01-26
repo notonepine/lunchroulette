@@ -118,7 +118,7 @@ public class MainActivity extends FragmentActivity {
      */
     private SharedPreferences getGCMPreferences(Context context) {
 
-        return getSharedPreferences(MainActivity.class.getSimpleName(), Context.MODE_PRIVATE);
+        return getSharedPreferences("com.notonepine.lunchroulette", Context.MODE_PRIVATE);
     }
 
     @Override

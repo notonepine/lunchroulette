@@ -4,8 +4,11 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -28,11 +31,13 @@ import com.parse.ParseUser;
 
 public class LoginFragment extends Fragment {
     View mView;
+    private SharedPreferences mPrefs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_login, container, false);
         ((Button) mView.findViewById(R.id.login_button)).setOnClickListener(loginClick());
+        mPrefs = getActivity().getSharedPreferences("com.notonepine.lunchroulette", Context.MODE_PRIVATE);
         return mView;
     }
 
@@ -40,57 +45,64 @@ public class LoginFragment extends Fragment {
         return new OnClickListener() {
             @Override
             public void onClick(View v) {
-            	// TODO Start loading animation
-            	ParseFacebookUtils.logIn(fbPermissions(), getActivity(), new LogInCallback() {
-            		@Override
-            		public void done(ParseUser user, ParseException err) {
-            			if (user == null) {
-            				Log.d("MyApp", "Exception: " + err.getMessage());
-            			} else {
-            				getUserData();
-            			}
-            		}
-            	});
+                // TODO Start loading animation
+                ParseFacebookUtils.logIn(fbPermissions(), getActivity(), new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException err) {
+                        if (user == null) {
+                            Log.d("MyApp", "Exception: " + err.getMessage());
+                        } else {
+                            getUserData();
+                        }
+                    }
+                });
             }
         };
     }
-    
+
     private List<String> fbPermissions() {
-    	return Arrays.asList(Permissions.User.LIKES, Permissions.User.INTERESTS, Permissions.User.EDUCATION_HISTORY);
+        return Arrays.asList(Permissions.User.LIKES, Permissions.User.INTERESTS, Permissions.User.EDUCATION_HISTORY);
     }
-    
+
     private void getUserData() {
-    	Request request = Request.newMeRequest(ParseFacebookUtils.getSession(), new Request.GraphUserCallback() {
-			@Override
-			public void onCompleted(GraphUser user, Response response) {
-				// TODO check for errors on response
-				sendUserToServer(user);
-			}
-		});
-    	request.executeAsync();
+        Request request = Request.newMeRequest(ParseFacebookUtils.getSession(), new Request.GraphUserCallback() {
+            @Override
+            public void onCompleted(GraphUser user, Response response) {
+                // TODO check for errors on response
+                sendUserToServer(user);
+            }
+        });
+        request.executeAsync();
     }
-    
+
     private void sendUserToServer(GraphUser user) {
-    	JSONObject data = user.getInnerJSONObject();
-    	Log.d("MyApp", "User data to server: " + data.toString());
-    	// mocked successful response
-    	userSignup().onSuccess(null);
-//    	NetworkConnection.getService().post("http://example.com/user", data.toString(), userSignup());
+        JSONObject data = user.getInnerJSONObject();
+        String GCMID = mPrefs.getString(MainActivity.PROPERTY_REG_ID, "");
+        try {
+            data.put("GCM_ID", GCMID);
+        } catch (JSONException e) {
+            // TODO Probably do something about this.
+            e.printStackTrace();
+        }
+        Log.d("MyApp", "User data to server: " + data.toString());
+        // mocked successful response
+        userSignup().onSuccess(null);
+        // NetworkConnection.getService().post("http://example.com/user", data.toString(), userSignup());
     }
-    
+
     private NetworkResponseListener userSignup() {
-    	return new NetworkResponseListener() {
-			@Override
-			public void onSuccess(InputStream data) {
-				// TODO if new, move to signup flow
-				moveToHomescreen();
-			}
-			
-			@Override
-			public void onError(Exception error) {
-				// TODO error something...
-			}
-		};
+        return new NetworkResponseListener() {
+            @Override
+            public void onSuccess(InputStream data) {
+                // TODO if new, move to signup flow
+                moveToHomescreen();
+            }
+
+            @Override
+            public void onError(Exception error) {
+                // TODO error something...
+            }
+        };
     }
 
     private void moveToHomescreen() {

@@ -55,6 +55,7 @@ public class LunchRouletteFragmentActivity extends FragmentActivity {
         ParseFacebookUtils.initialize("1456402971254781");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
         ImageLoader.getInstance().init(config);
+        NetworkUtils.initialize(this);
 
         gcm = GoogleCloudMessaging.getInstance(this);
         regid = getRegistrationId(context);

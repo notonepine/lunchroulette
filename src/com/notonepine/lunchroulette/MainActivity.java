@@ -42,6 +42,7 @@ public class MainActivity extends FragmentActivity {
 
         Parse.initialize(this, "QCYQYAaLANlJtBoohLfBhdg7C9HtFdRpCE3aVFNh", "UOaeCJzOQRwV2T9TIOVtLh3NiFVoCAMXS001yM5W");
         ParseFacebookUtils.initialize("1456402971254781");
+        NetworkConnection.initialize(getApplicationContext());
 
         gcm = GoogleCloudMessaging.getInstance(this);
         regid = getRegistrationId(context);
